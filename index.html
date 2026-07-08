@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>@XazzaX — Link in Bio</title>
+    <meta name="description" content="Link collection XazzaX - Instagram, YouTube, Saweria, WhatsApp Channel">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="@XazzaX — Link in Bio">
+    <meta property="og:description" content="semua link penting ada di sini, tinggal pencet~">
+    <meta property="og:type" content="website">
+
+    <!-- ============================================================
+         FONT AWESOME 6 (Open Source Icons) — dipakai buat semua ikon
+         ============================================================ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================================================================
+           TOKEN WARNA
+           ================================================================ */
+        :root {
+            --bg-cream: #FFF6FB;
+            --slime-lilac: #C9B6E4;
+            --slime-pink: #FFB8D9;
+            --slime-mint: #B8F2E6;
+            --slime-glow: #D4FF7A;
+            --ink: #3D2C4A;
+            --ink-soft: #7A6B8A;
+            --card-bg: #FFFFFF;
+            --card-border: #F0E4F7;
+            --shadow-soft: 0 8px 20px rgba(155, 120, 190, 0.18);
+            --shadow-hover: 0 14px 32px rgba(155, 120, 190, 0.28);
+            --radius-card: 20px;
+            --font-display: 'Baloo 2', system-ui, sans-serif;
+            --font-body: 'Quicksand', system-ui, sans-serif;
+        }
+
+        /* ================================================================
+           RESET + BASE
+           ================================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-cream);
+            color: var(--ink);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        img,
+        svg {
+            -webkit-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ================================================================
+           BLOBS BACKGROUND
+           ================================================================ */
+        .blob-field {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(44px);
+            opacity: 0.5;
+            will-change: transform;
+        }
+
+        .blob-1 {
+            width: 280px;
+            height: 280px;
+            background: var(--slime-lilac);
+            top: -70px;
+            left: -70px;
+            animation: floatA 14s ease-in-out infinite;
+        }
+
+        .blob-2 {
+            width: 240px;
+            height: 240px;
+            background: var(--slime-pink);
+            bottom: -60px;
+            right: -50px;
+            animation: floatB 16s ease-in-out infinite;
+        }
+
+        .blob-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--slime-mint);
+            top: 40%;
+            right: -80px;
+            animation: floatA 18s ease-in-out infinite reverse;
+        }
+
+        @keyframes floatA {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(22px, 32px) scale(1.07);
+            }
+        }
+
+        @keyframes floatB {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(-28px, -22px) scale(0.94);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .blob,
+            .avatar-wrap,
+            .link-card,
+            .drip {
+                animation: none !important;
+            }
+        }
+
+        /* ================================================================
+           MAIN WRAPPER
+           ================================================================ */
+        .page {
+            position: relative;
+            z-index: 1;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 36px 20px 60px;
+        }
+
+        /* ================================================================
+           PROFIL
+           ================================================================ */
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .avatar-wrap {
+            width: 118px;
+            height: 118px;
+            border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--slime-lilac), var(--slime-pink), var(--slime-mint));
+            box-shadow: var(--shadow-soft);
+            animation: wobble 7s ease-in-out infinite;
+            margin-bottom: 16px;
+        }
+
+        @keyframes wobble {
+            0%,
+            100% {
+                border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+            }
+            50% {
+                border-radius: 58% 42% 40% 60% / 55% 60% 40% 45%;
+            }
+        }
+
+        .avatar-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            overflow: hidden;
+            background: var(--card-bg);
+        }
+
+        .avatar-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .name {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: 0.3px;
+            margin-bottom: 2px;
+        }
+
+        .nickname {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--ink-soft);
+            margin-bottom: 8px;
+        }
+
+        .bio {
+            font-size: 14px;
+            color: var(--ink-soft);
+            max-width: 320px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .drip {
+            width: 14px;
+            height: 22px;
+            margin: 20px auto 0;
+            background: var(--slime-glow);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: dripFall 2.6s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes dripFall {
+            0%,
+            100% {
+                transform: translateY(0) scaleY(1);
+            }
+            50% {
+                transform: translateY(6px) scaleY(1.15);
+            }
+        }
+
+        /* ================================================================
+           SECTION LABEL
+           ================================================================ */
+        .section-label {
+            font-family: var(--font-display);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin: 28px 4px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-label::after {
+            content: "";
+            flex: 1;
+            height: 1.5px;
+            background: linear-gradient(90deg, var(--slime-lilac), transparent);
+        }
+
+        /* ================================================================
+           LINK CARDS
+           ================================================================ */
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .link-card {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            background: var(--card-bg);
+            border: 1.5px solid var(--card-border);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            -webkit-tap-highlight-color: transparent;
+            cursor: pointer;
+        }
+
+        .link-card:active {
+            transform: scale(0.96);
+            box-shadow: 0 4px 12px rgba(155, 120, 190, 0.15);
+        }
+
+        @media (hover:hover) {
+            .link-card:hover {
+                transform: translateY(-4px) scale(1.015);
+                box-shadow: var(--shadow-hover);
+                border-color: var(--slime-lilac);
+            }
+        }
+
+        /* ========== ICON CARD pake Font Awesome ========== */
+        .link-icon {
+            flex: 0 0 auto;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--ink);
+        }
+
+        .link-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .link-title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 1.25;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .link-desc {
+            font-size: 12.5px;
+            color: var(--ink-soft);
+            margin-top: 2px;
+            line-height: 1.35;
+        }
+
+        .link-arrow {
+            flex: 0 0 auto;
+            opacity: 0.4;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+            font-size: 14px;
+        }
+
+        .link-card:hover .link-arrow {
+            transform: translateX(3px);
+            opacity: 0.8;
+        }
+
+        /* ========== TAG / BADGE ========== */
+        .tag {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 2px 10px;
+            border-radius: 99px;
+            background: rgba(201, 182, 228, 0.25);
+            color: var(--ink-soft);
+            border: 1px solid rgba(201, 182, 228, 0.3);
+            vertical-align: middle;
+            line-height: 1.4;
+        }
+
+        .tag-18 {
+            background: rgba(255, 100, 100, 0.15);
+            color: #c0392b;
+            border-color: rgba(192, 57, 43, 0.25);
+        }
+
+        .tag-support {
+            background: rgba(212, 162, 52, 0.15);
+            color: #b8860b;
+            border-color: rgba(184, 134, 11, 0.25);
+        }
+
+        .tag-hot {
+            background: rgba(255, 50, 50, 0.12);
+            color: #d63031;
+            border-color: rgba(214, 48, 49, 0.2);
+            animation: pulseTag 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseTag {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* ========== WARNA IKON PER KATEGORI ========== */
+        .icon-ig {
+            background: linear-gradient(135deg, #FFD7EC, #FFB8D9);
+            color: #B5468F;
+        }
+        .icon-yt {
+            background: linear-gradient(135deg, #FFD1D1, #FFB3B3);
+            color: #D64545;
+        }
+        .icon-donate {
+            background: linear-gradient(135deg, #FFF3B0, #FFE082);
+            color: #C9891A;
+        }
+        .icon-wa {
+            background: linear-gradient(135deg, #C8F5DD, #B8F2E6);
+            color: #2FA97A;
+        }
+        .icon-wa-dark {
+            background: linear-gradient(135deg, #D4F0E0, #A8E6CF);
+            color: #1a7a5a;
+        }
+
+        /* ================================================================
+           FOOTER
+           ================================================================ */
+        .footer {
+            text-align: center;
+            margin-top: 44px;
+            font-size: 12px;
+            color: var(--ink-soft);
+            opacity: 0.7;
+            font-weight: 500;
+        }
+
+        .footer .heart {
+            color: #ff6b81;
+            display: inline-block;
+            animation: heartBeat 1.8s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            15% {
+                transform: scale(1.2);
+            }
+            30% {
+                transform: scale(1);
+            }
+            45% {
+                transform: scale(1.15);
+            }
+            60% {
+                transform: scale(1);
+            }
+        }
+
+        /* ================================================================
+           RESPONSIVE
+           ================================================================ */
+        @media (min-width: 640px) {
+            .page {
+                padding-top: 56px;
+            }
+            .name {
+                font-size: 26px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .page {
+                padding-left: 14px;
+                padding-right: 14px;
+            }
+            .link-title {
+                font-size: 14.5px;
+            }
+            .link-desc {
+                font-size: 11.5px;
+            }
+            .link-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 340px) {
+            .link-title {
+                font-size: 13px;
+                flex-wrap: wrap;
+            }
+            .tag {
+                font-size: 8px;
+                padding: 1px 8px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+            .link-card:hover {
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ====== BACKGROUND BLOBS ====== -->
+    <div class="blob-field" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="page">
+
+        <!-- ====== PROFIL ====== -->
+        <section class="profile">
+            <div class="avatar-wrap">
+                <div class="avatar-inner">
+                    <img src="https://cdn.aceimg.com/LNN8UA7dJ.jpg" alt="Foto profil XazzaX">
+                </div>
+            </div>
+
+            <h1 class="name">ᬊᬁ 𝐗𝐈𝐗 ༗ 𝖝𝖆𝖟𝖟𝖆𝖝 ࿐</h1>
+  
+            <p class="bio">- follow dulu biar worek 100% -</p>
+
+            <div class="drip" aria-hidden="true"></div>
+        </section>
+
+        <!-- ====== SOSIAL MEDIA & DONASI ====== -->
+        <div class="section-label">Sosial Media &amp; Dukungan</div>
+        <div class="links">
+
+            <!-- INSTAGRAM -->
+            <a class="link-card" href="https://instagram.com/mzacky19" target="_blank" rel="noopener noreferrer">
+                <span class="link-icon icon-ig">
+                    <i class="fa-brands fa-instagram"></i>
+                </span>
+                <span class="link-text">
+                    <span class="link-title">
+                        Instagram
+                      
+                    </span>
+                    <span class="link-desc">follow kalau mau, enggak juga gapapa</span>
+                </span>
+                <span class="link-arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+            </a>
+
+            <!-- YOUTUBE -->
+            <a class="link-card" href="https://youtube.com/@zaxajalah" target="_blank" rel="noopener noreferrer">
+                <span class="link-icon icon-yt">
+                    <i class="fa-brands fa-youtube"></i>
+                </span>
+                <span class="link-text">
+                    <span class="link-title">
+                        YouTube
+                   
+                    </span>
+                    <span class="link-desc">channel kecil, mimpi besar</span>
+                </span>
+                <span class="link-arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+            </a>
+
+            <!-- SAWERIA (DONASI) -->
+            <a class="link-card" href="https://saweria.co/zaxarchive" target="_blank" rel="noopener noreferrer">
+                <span class="link-icon icon-donate">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </span>
+                <span class="link-text">
+                    <span class="link-title">
+                        Saweria
+                        <span class="tag tag-support">support</span>
+                    </span>
+                    <span class="link-desc">donate buat beli sosis kanzler</span>
+                </span>
+                <span class="link-arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+            </a>
+        </div>
+
+        <!-- ====== WHATSAPP CHANNEL ====== -->
+        <div class="section-label">WhatsApp Channel</div>
+        <div class="links">
+
+               <!-- GORE ID -->
+            <a class="link-card" href="https://whatsapp.com/channel/0029Vb69aWt0gcfNsAFLHD1n" target="_blank" rel="noopener noreferrer">
+                <span class="link-icon icon-wa-dark">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </span>
+                <span class="link-text">
+                    <span class="link-title">
+                        GORE ID
+                        <span class="tag tag-18">18+</span>
+                       
+                    </span>
+                    <span class="link-desc">kumpulan kasus viral (ada doksli)</span>
+                </span>
+                <span class="link-arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+            </a>
+
+            <!-- ZAX STIKER -->
+            <a class="link-card" href="https://whatsapp.com/channel/0029VajzydQKQuJEKIXekG3B" target="_blank" rel="noopener noreferrer">
+                <span class="link-icon icon-wa">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </span>
+                <span class="link-text">
+                    <span class="link-title">
+                        RANDOM STIKER
+                  
+                    </span>
+                    <span class="link-desc">koleksi stiker absurd dari internet</span>
+                </span>
+                <span class="link-arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+            </a>
+
+            <!-- ZAXMOD ID -->
+            <a class="link-card" href="https://whatsapp.com/channel/0029VbAPp4h17EmobfzmoN3Y" target="_blank" rel="noopener noreferrer">
+                <span class="link-icon icon-wa-dark">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </span>
+                <span class="link-text">
+                    <span class="link-title">
+                        ZAXMOD ID
+                       
+                    </span>
+                    <span class="link-desc">kumpulan aplikasi premium (gratis)</span>
+                </span>
+                <span class="link-arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+            </a>
+
+        </div>
+
+        <!-- ====== FOOTER ====== -->
+        <div class="footer">
+            dibuat dengan <span class="heart">♥</span> oleh <strong>@zaxtamvan</strong>
+        </div>
+
+    </main>
+
+    <script>
+        /* ================================================================
+           ANTI-COPY
+           ================================================================ */
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            var key = e.key ? e.key.toLowerCase() : '';
+            var blocked = (e.ctrlKey || e.metaKey) && (key === 'c' || key === 'u' || key === 's');
+            if (blocked) {
+                e.preventDefault();
+            }
+        });
+
+        /* ================================================================
+           KLIK ANIMASI
+           ================================================================ */
+        document.querySelectorAll('.link-card').forEach(function(card) {
+            card.addEventListener('click', function() {
+                this.style.transition = 'transform 0.08s ease';
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 120);
+            });
+        });
+    </script>
+
+</body>
+</html>

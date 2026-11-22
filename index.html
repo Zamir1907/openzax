@@ -426,6 +426,11 @@
             background: linear-gradient(135deg, #FFF3B0, #FFE082);
             color: #C9891A;
         }
+        .icon-tt {
+            background: linear-gradient(135deg, #2A2A2E, #010101);
+            color: #FFFFFF;
+            text-shadow: -2px -2px 0 #25F4EE, 2px 2px 0 #FE2C55;
+        }
         .icon-wa {
             background: linear-gradient(135deg, #C8F5DD, #B8F2E6);
             color: #2FA97A;
@@ -573,7 +578,7 @@
             </a>
 
             <!-- YOUTUBE -->
-            <a class="link-card" href="https://youtube.com/@zaxajalah" target="_blank" rel="noopener noreferrer">
+            <a class="link-card" id="yt-link" href="https://youtube.com/@zaxajalah?si=447qL-ndTsFyfRHH" target="_blank" rel="noopener noreferrer">
                 <span class="link-icon icon-yt">
                     <i class="fa-brands fa-youtube"></i>
                 </span>
@@ -583,6 +588,22 @@
                    
                     </span>
                     <span class="link-desc">channel kecil, mimpi besar</span>
+                </span>
+                <span class="link-arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+            </a>
+
+            <!-- TIKTOK — GANTI "USERNAME" DI BAWAH DENGAN USERNAME TIKTOK KAMU -->
+            <a class="link-card" href="https://www.tiktok.com/@USERNAME" target="_blank" rel="noopener noreferrer">
+                <span class="link-icon icon-tt">
+                    <i class="fa-brands fa-tiktok"></i>
+                </span>
+                <span class="link-text">
+                    <span class="link-title">
+                        TikTok
+                    </span>
+                    <span class="link-desc">scroll bentar, eh kebablasan sejam</span>
                 </span>
                 <span class="link-arrow">
                     <i class="fa-solid fa-chevron-right"></i>
@@ -599,7 +620,7 @@
                         Saweria
                         <span class="tag tag-support">support</span>
                     </span>
-                    <span class="link-desc">donate buat beli sosis kanzler</span>
+                    <span class="link-desc">saweria nya kak buat beli sosis kanzler</span>
                 </span>
                 <span class="link-arrow">
                     <i class="fa-solid fa-chevron-right"></i>
@@ -695,6 +716,38 @@
                 e.preventDefault();
             }
         });
+
+        /* ================================================================
+           FIX YOUTUBE DI IN-APP BROWSER (Instagram / Facebook / TikTok)
+           Browser bawaan IG sering gagal buka youtube.com ("tidak ada
+           koneksi"), jadi di HP kita lempar langsung ke aplikasi YouTube.
+           ================================================================ */
+        (function() {
+            var yt = document.getElementById('yt-link');
+            if (!yt) return;
+            var ua = navigator.userAgent || '';
+            var inApp = /Instagram|FBAN|FBAV|FB_IAB|musical_ly|Bytedance|Line\//i.test(ua);
+            if (!inApp) return;
+
+            var webUrl = 'https://www.youtube.com/@zaxajalah?si=447qL-ndTsFyfRHH';
+            var isAndroid = /Android/i.test(ua);
+            var isIOS = /iPhone|iPad|iPod/i.test(ua);
+
+            yt.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (isAndroid) {
+                    // Buka app YouTube; kalau belum ter-install, buka di browser Chrome
+                    window.location.href = 'intent://www.youtube.com/@zaxajalah#Intent;scheme=https;package=com.google.android.youtube;S.browser_fallback_url=' + encodeURIComponent(webUrl) + ';end';
+                } else if (isIOS) {
+                    // Coba buka app YouTube, kalau gagal balik ke versi web
+                    var t = setTimeout(function() { window.location.href = webUrl; }, 1500);
+                    window.addEventListener('pagehide', function() { clearTimeout(t); }, { once: true });
+                    window.location.href = 'youtube://www.youtube.com/@zaxajalah';
+                } else {
+                    window.location.href = webUrl;
+                }
+            });
+        })();
 
         /* ================================================================
            KLIK ANIMASI
